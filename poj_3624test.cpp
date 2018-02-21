@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<cstdio>
+#include<algorithm>
 using namespace std;
 int dp[12900];
 int w[3420], v[3420];
