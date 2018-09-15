@@ -27,7 +27,4 @@ public class Lc29 {
         }
         return multiple + ldivide(ldividend - sum, ldivisor);
     }
-    public static void main(String[] args) {
-        System.out.println(new Lc29().divide(10,3));
-    }
 }
