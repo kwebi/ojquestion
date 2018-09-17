@@ -57,6 +57,6 @@ public class Lc91 {
         return arr.get(n-1);
     }
     public static void main(String[] args) {
-        System.out.println(new Lc91().numDecodings("1212"));
+        System.out.println(new Lc91().numDecodings("106"));
     }
 }
