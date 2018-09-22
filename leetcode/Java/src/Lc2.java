@@ -1,3 +1,8 @@
+/*
+the problem is not solved in Java
+please look the Python version
+ */
+
 public class Lc2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode ans = new ListNode(0);
