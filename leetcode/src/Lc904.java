@@ -5,34 +5,29 @@ public class Lc904 {
     public int totalFruit(int[] tree) {
         int m = tree.length;
         int ans = 0;
-        for (int i=0; i<tree.length; i++) {
-            int b1 = tree[i];
-            int b2 = -1;
-            int total = 1;
+        for (int i = 0; i < tree.length; i++) {
+            int tmp = 0;
+            List<Integer> type = new ArrayList<>(2);
+            type.add(tree[i]);
+            tmp++;
             if (ans >= m) {
                 break;
             }
             m--;
-            for (int j=i+1; j<tree.length; j++) {
-                int f = tree[j];
-                if (f == b1) {
-                    total++;
-                    continue;
-                }
-                if (b2 == -1) {
-                    b2 = f;
-                    total++;
-                }
-                else {
-                    if (f == b2) {
-                        total++;
-                    }
-                    else {
-                        break;
-                    }
+            for (int j = i; j < tree.length; j++) {
+                if (!type.contains(tree[j]) && type.size() < 2) {
+                    type.add(tree[j]);
+                    tmp++;
+                } else if (type.contains(tree[j])) {
+                    if (j == i) continue;
+                    tmp++;
+                } else if (!type.contains(tree[j])) {
+                    break;
                 }
             }
-            ans = Math.max(ans, total);
+            if (ans <= tmp) {
+                ans = tmp;
+            }
         }
         return ans;
     }
