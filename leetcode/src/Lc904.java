@@ -4,40 +4,40 @@ import java.util.List;
 public class Lc904 {
     public int totalFruit(int[] tree) {
         int m = tree.length;
-        int[] dp = new int[m];
         int ans = 0;
-        for (int i = 0; i < m; i++) {
-            if (dp[i] > 1) {
-                continue;
+        for (int i=0; i<tree.length; i++) {
+            int b1 = tree[i];
+            int b2 = -1;
+            int total = 1;
+            if (ans >= m) {
+                break;
             }
-            int tmp = 0;
-            List<Integer> type = new ArrayList<>(2);
-            type.add(tree[i]);
-            tmp++;
-            int j;
-            int diff=m;
-            for (j = i; j < m; j++) {
-                if (!type.contains(tree[j]) && type.size() < 2) {
-                    type.add(tree[j]);
-                    tmp++;
-                    diff = j;
-                } else if (type.contains(tree[j])) {
-                    if (j == i) continue;
-                    tmp++;
-                } else if (!type.contains(tree[j])) {
-                    break;
+            m--;
+            for (int j=i+1; j<tree.length; j++) {
+                int f = tree[j];
+                if (f == b1) {
+                    total++;
+                    continue;
+                }
+                if (b2 == -1) {
+                    b2 = f;
+                    total++;
+                }
+                else {
+                    if (f == b2) {
+                        total++;
+                    }
+                    else {
+                        break;
+                    }
                 }
             }
-            if (ans <= tmp) {
-                ans = tmp;
-            }
-            for (int k=i;k<diff;k++) {
-                dp[k] = ans-(k-i);
-            }
+            ans = Math.max(ans, total);
         }
         return ans;
     }
     public static void main(String[] args) {
-        System.out.println(new Lc904().totalFruit(new int[] {0,0,0,0,0,0,0,0,0,0}));
+        System.out.println(new Lc904().totalFruit(new int[] {1,2,1}));
     }
 }
+
