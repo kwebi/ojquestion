@@ -5,39 +5,25 @@ please look the Python version
 
 public class Lc2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode ans = new ListNode(0);
-        ListNode p = ans;
-        long sum1=0;
-        long sum2 = 0;
-        int b=0;
-        for (ListNode p1 = l1; p1 != null; p1=p1.next) {
-            sum1 += p1.val * (long)(Math.pow(10,b));
-            b++;
+        ListNode dummyHead = new ListNode(0);
+        ListNode p = l1, q = l2, curr = dummyHead;
+        int carry = 0;
+        while (p != null || q != null) {
+            int x = (p != null) ? p.val : 0;
+            int y = (q != null) ? q.val : 0;
+            int sum = carry + x + y;
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+            if (p != null) p = p.next;
+            if (q != null) q = q.next;
         }
-        b = 0;
-        for (ListNode p2 = l2; p2 != null; p2=p2.next) {
-            sum2 += p2.val * (long)(Math.pow(10,b));
-            b++;
+        if (carry > 0) {
+            curr.next = new ListNode(carry);
         }
-        long sum = sum1 + sum2;
-        int i=0;
-        while (sum/(long) Math.pow(10,i)>=1) {
-            i++;
-        }
-        if (sum == 0) {
-            i++;
-        }
-        for (int j=0; j<i; j++) {
-            long tmp = (long)Math.pow(10,j);
-            long t = (sum/tmp);
-            Long l = t % (long)10;
-            int res = l.intValue();
-            p.next = new ListNode(res);
-            p = p.next;
-        }
-        ans = ans.next;
-        return ans;
+        return dummyHead.next;
     }
+
     public static void main(String[] args) {
         ListNode l1 = new ListNode(9);
         ListNode l2 = new ListNode(1);
