@@ -6,27 +6,22 @@ class Solution
   public:
     int maxArea(vector<int> &height)
     {
-        vector<int> max;
-        for (vector<int>::size_type i = 0; i < height.size() - 1; ++i)
+        int value = 0;
+        vector<int>::size_type l = 0;
+        auto r = height.size() - 1;
+
+        while (l < r)
         {
-            int imax = height[i + 1] < height[i] ? height[i + 1] : height[i];
-            for (vector<int>::size_type j = i + 1; j < height.size(); ++j)
+            int min = height[l] < height[r] ? height[l] : height[r];
+            int area = (r - l) * min;
+            value = value > area ? value : area;
+            if (height[l] < height[r])
             {
-                int min = height[j] < height[i] ? height[j] : height[i];
-                int area = min * (j - i);
-                if (area > imax)
-                {
-                    imax = area;
-                }
+                ++l;
             }
-            max.push_back(imax);
-        }
-        int value = max[0];
-        for (auto iter = max.begin(); iter != max.end(); ++iter)
-        {
-            if (*iter > value)
+            else
             {
-                value = *iter;
+                --r;
             }
         }
         return value;
@@ -35,7 +30,7 @@ class Solution
 
 int main()
 {
-    vector<int> v = {2, 1};
+    vector<int> v = {1, 8, 6, 2, 5, 4, 8, 3, 7};
     Solution s;
     cout << s.maxArea(v) << endl;
     return 0;
