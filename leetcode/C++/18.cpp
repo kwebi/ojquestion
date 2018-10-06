@@ -53,17 +53,6 @@ class Solution
 
         return res;
     }
-
-  private:
-    void push(vector<vector<int>> &res, int a, int b, int c, int d)
-    {
-        vector<int> v;
-        v.push_back(a);
-        v.push_back(b);
-        v.push_back(c);
-        v.push_back(d);
-        res.push_back(v);
-    }
 };
 
 int main(int argc, char const *argv[])
