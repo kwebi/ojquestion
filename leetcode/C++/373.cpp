@@ -1,20 +1,41 @@
 #include <vector>
 #include <numeric>
 #include <climits>
+#include <queue>
+#include<functional>
 using namespace std;
+
+struct Node
+{
+    friend class Solution;
+    pair<int, int> p;
+    Node(int a, int b)
+    {
+        p.first = a;
+        p.second = b;
+    }
+    Node(const pair<int, int> &v)
+    {
+        p = v;
+    }
+};
+bool operator>(const Node &n1, const Node &n2)
+{
+    return (n1.p.first + n1.p.second) > (n2.p.first + n2.p.second);
+}
 
 class Solution
 {
   public:
     vector<pair<int, int>> kSmallestPairs(vector<int> &nums1, vector<int> &nums2, int k)
     {
-        vector<pair<int, int>> res;
+        priority_queue<Node, vector<Node>, greater<Node>> res;
         for (size_t i = 0; i < nums1.size(); ++i)
         {
             for (size_t j = 0; j < nums2.size(); ++j)
             {
                 auto val = make_pair(nums1[i], nums2[j]);
-                insert(res, val);
+                res.push(val);
             }
         }
         if (k > res.size())
@@ -22,7 +43,8 @@ class Solution
         vector<pair<int, int>> r;
         for (size_t i = 0; i < k; ++i)
         {
-            r.push_back(removeMin(res));
+            r.push_back(res.top().p);
+            res.pop();
         }
         return r;
     }
