@@ -9,7 +9,7 @@ class Solution
     int kthSmallest(vector<vector<int>> &matrix, int k)
     {
         size_t n = matrix.size();
-        priority_queue<int,vector<int>, greater<int>> v;
+        priority_queue<int, vector<int>, greater<int>> v;
         for (size_t i = 0; i < n; ++i)
         {
             for (size_t j = 0; j < n; ++j)
@@ -66,3 +66,21 @@ int main()
     auto res = s.kthSmallest(v, k);
     return 0;
 }
+class Solution2
+{
+  public:
+    int kthSmallest(vector<vector<int>> &matrix, int k)
+    {
+        priority_queue<int> kth;
+        for (int i = 0; i < matrix.size(); i++)
+        {
+            for (auto n : matrix[i])
+            {
+                kth.push(n);
+                if (kth.size() > k)
+                    kth.pop();
+            }
+        }
+        return kth.top();
+    }
+};
