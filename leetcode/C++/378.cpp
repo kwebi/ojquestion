@@ -1,5 +1,6 @@
 #include <vector>
 #include <deque>
+#include <queue>
 using namespace std;
 
 class Solution
@@ -8,20 +9,19 @@ class Solution
     int kthSmallest(vector<vector<int>> &matrix, int k)
     {
         size_t n = matrix.size();
-        deque<int> v;
-        v.push_back(0);
+        priority_queue<int,vector<int>, greater<int>> v;
         for (size_t i = 0; i < n; ++i)
         {
             for (size_t j = 0; j < n; ++j)
             {
-                insert(v, matrix[i][j]);
+                v.push(matrix[i][j]);
             }
         }
         for (size_t i = 0; i < k - 1; ++i)
         {
-            removeMin(v);
+            v.pop();
         }
-        return removeMin(v);
+        return v.top();
     }
     void insert(deque<int> &v, int val)
     {
