@@ -25,14 +25,9 @@ class Solution
         {
             ++mp[e];
         }
-        vector<pair<char, int>> tmp;
         for (auto e : mp)
         {
-            tmp.push_back(make_pair(e.first, e.second));
-        }
-        for (auto e : tmp)
-        {
-            pq.push(e);
+            pq.push(make_pair(e.first, e.second));
         }
         string res;
         while (!pq.empty())
