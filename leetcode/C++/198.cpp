@@ -16,14 +16,17 @@ class Solution
         {
             return nums[0];
         }
-        vector<int> sum(len);
-        sum[0] = nums[0];
-        sum[1] = nums[0] > nums[1] ? nums[0] : nums[1];
+        int a = 0;
+        int b = 0;
+        a = nums[0];
+        b = nums[0] > nums[1] ? nums[0] : nums[1];
         for (int i = 2; i < len; ++i)
         {
-            sum[i] = maxNum(sum[i - 1], sum[i - 2] + nums[i]);
+            int tmp = b;
+            b = maxNum(b, a + nums[i]);
+            a = tmp;
         }
-        return sum[len - 1];
+        return b;
     }
     int maxNum(int a, int b)
     {
