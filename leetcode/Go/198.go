@@ -14,7 +14,6 @@ func rob(nums []int) int {
 func maxInt(a int, b int) int {
 	if a > b {
 		return a
-	} else {
-		return b
 	}
+	return b
 }
