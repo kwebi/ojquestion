@@ -1,58 +1,36 @@
 #include <vector>
-#include <map>
+
 using namespace std;
 
 class Solution
 {
   public:
-    int num[1695];
-    map<int, bool> have;
+    int ids[3]{0};
+    vector<int> uglys;
 
     int nthUglyNumber(int n)
     {
-        num[0] = 1;
-        have[0] = true;
-        num[1] = 2;
-        have[1] = true;
-        num[2] = 3;
-        have[2] = true;
-        num[3] = 4;
-        have[3] = true;
-        num[4] = 5;
-        have[4] = true;
-        have[5] = true;
-        int index = 5;
-        for (double t = 6; index < n; ++t)
+        uglys.resize(n);
+        uglys[0] = 1;
+        for (int i = 1; i < n; ++i)
         {
-            if (t / 2 - int(t / 2) < 1e-9)
-            {
-                if (have[int(t / 2)] != false)
-                {
-                    num[index] = t;
-                    have[int(t)] = true;
-                    ++index;
-                }
-            }
-            else if (t / 3 - int(t / 3) < 1e-9)
-            {
-                if (have[int(t / 3)] != false)
-                {
-                    num[index] = t;
-                    have[int(t)] = true;
-                    ++index;
-                }
-            }
-            else if (t / 5 - int(t / 5) < 1e-9)
-            {
-                if (have[int(t / 5)] != false)
-                {
-                    num[index] = t;
-                    have[int(t)] = true;
-                    ++index;
-                }
-            }
+            int a = uglys[ids[0]] * 2;
+            int b = uglys[ids[1]] * 3;
+            int c = uglys[ids[2]] * 5;
+            int min = minInt(a, minInt(b, c));
+            if (a == min)
+                ++ids[0];
+            if (b == min)
+                ++ids[1];
+            if (c == min)
+                ++ids[2];
+            uglys[i] = min;
         }
-        return num[n - 1];
+        return uglys[n - 1];
+    }
+    int minInt(int a, int b)
+    {
+        return a < b ? a : b;
     }
 };
 
