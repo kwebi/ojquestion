@@ -3,5 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(numSquares(12))
+	fmt.Println(lengthOfLIS([]int{1,3,6,7,9,4,10,5,6}))
 }
