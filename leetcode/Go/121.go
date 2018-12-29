@@ -2,16 +2,17 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func maxProfit(prices []int) int {
 	l := len(prices)
 	dp := make([]int, l)
 	var global = 0
-	for i := l - 1; i > 0; i-- {
-		for j := i - 1; j >= 0; j-- {
-			dp[i] = maxInt(dp[i], prices[i]-prices[j])
-		}
+	var min = math.MaxInt32
+	for i := 0; i < l; i++ {
+		min = minInt(min, prices[i])
+		dp[i] = prices[i] - min
 		global = maxInt(global, dp[i])
 	}
 	return global
@@ -32,6 +33,6 @@ func minInt(a int, b int) int {
 }
 
 func main() {
-	arr := []int{7,1,5,3,6,4}
+	arr := []int{7,6,4,3,1}
 	fmt.Println(maxProfit(arr))
 }
