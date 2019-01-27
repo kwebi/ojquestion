@@ -1,59 +1,47 @@
 #include <string>
-#include <vector>
+#include <deque>
 using namespace std;
 class Solution
 {
   public:
     string predictPartyVictory(string senate)
     {
+        deque<int> rq;
+        deque<int> dq;
+        int n = senate.length();
 
-        int pos = 0;
-
-        while (true)
+        for (int i = 0; i != n; ++i)
         {
-            for (long long i = 0; i < senate.size(); ++i)
-            {
-                for (long long j = i + 1; j < senate.size() + i; ++j)
-                {
-                    auto t = j;
-                    if (t >= senate.size())
-                        t -= senate.size();
-                    if (senate[t] != senate[i])
-                    {
-                        senate.erase(senate.begin() + t);
-                        break;
-                    }
-                }
-            }
-            bool flag = true;
-            char cur = '0';
-            for (int i = 0; i < senate.size(); ++i)
-            {
-                if (cur == '0')
-                    cur = senate[i];
-                else
-                {
-                    if (senate[i] != cur)
-                    {
-                        flag = false;
-                        break;
-                    }
-                }
-                pos = i;
-            }
-            if (flag != false)
-                break;
+            if (senate[i] == 'R')
+                rq.push_back(i);
+            else
+                dq.push_back(i);
         }
-        if (senate[pos] == 'R')
-            return string("Radiant");
+        while (!rq.empty() && !dq.empty())
+        {
+            auto rf = rq.front();
+            auto df = dq.front();
+            rq.pop_front();
+            dq.pop_front();
+            if (rf < df)
+            {
+                rq.push_back(rf + n);
+            }
+            else
+            {
+                dq.push_back(df + n);
+            }
+        }
+        if (rq.empty())
+            return "Dire";
         else
-            return string("Dire");
+            return "Radiant";
     }
 };
 
 int main()
 {
     Solution s;
-    auto res = s.predictPartyVictory("DRRDRDRDRDDRDRDR");
+    auto res = s.predictPartyVictory("DR");
     return 0;
 }
