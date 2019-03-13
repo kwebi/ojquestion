@@ -31,5 +31,6 @@ class Solution
             if (!flag)
                 res.push_back(-1);
         }
+        return res;
     }
 };
