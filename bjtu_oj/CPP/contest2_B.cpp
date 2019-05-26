@@ -1,3 +1,4 @@
+//http://citel.bjtu.edu.cn/vjudge/contest/view.action?cid=325#rank
 #include <string.h>
 #include <stdio.h>
 #include <string>
