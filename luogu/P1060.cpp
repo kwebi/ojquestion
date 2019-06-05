@@ -4,7 +4,7 @@ const int maxn = 3e4 + 5;
 
 int v[30]; //重要程度*价格
 int w[30]; //价格
-int f[maxn];
+int f[30][maxn];
 
 inline int _max(int x, int y)
 {
@@ -22,12 +22,13 @@ int main()
     }
     for (int i = 1; i <= m; ++i)
     {
-        for (int c = n; c >= w[i]; --c)
+        for (int c = 0; c <= n; ++c)
         {
-            f[c] = _max(f[c], f[c - w[i]] + v[i]);
+            f[i][c] = f[i - 1][c];
+            if (c > w[i])
+                f[i][c] = _max(f[i - 1][c], f[i - 1][c - w[i]] + v[i]);
         }
     }
-    printf("%d", f[n]);
-
+    printf("%d", f[m][n]);
     return 0;
 }
