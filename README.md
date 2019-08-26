@@ -13,3 +13,5 @@
 6. `vjudge`指`https://vjudge.net/`,里面主要存`codeforces.com`和`uva`等外国网站的题,还有部分`poj`的题
 
 7. `luogu`是指`https://www.luogu.org/`, 这个网站和`codeforces`是目前刷题主力网站
+
+8. `VScode配置`，有运行功能和调试功能(虽然现在是不怎么用),需要在工作文件夹里建立一个bin(可以自己设)文件夹，里面的一些编译器等环境需要自己改。

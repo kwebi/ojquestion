@@ -1,0 +1,48 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile",
+            "command": "g++",//这里需要将g++添加到环境变量才可以使用，否则写完整路径
+            "args": [
+                "-g",
+                "\"${file}\"", //指定编译源代码文件
+                "-o",
+                "bin/a.exe", // 指定输出到bin目录的a.exe
+                "-ggdb3", // 生成和调试有关的信息
+                "-finput-charset=UTF-8",//输入编译器文本编码 默认为UTF-8
+                "-fexec-charset=GBK",//编译器输出文本编码 可以输入中文
+                "-Wall", // 开启额外警告
+                "-static-libgcc", // 静态链接
+                "-std=c++11",
+                "-Wno-format",
+            ],
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always", // 在“终端”中显示编译信息的策略，可以为always，silent，never
+                "focus": false,
+                "panel": "shared" // 不同的文件的编译信息共享一个终端面板
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "\\"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        }
+    ]
+}

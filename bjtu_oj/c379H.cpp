@@ -6,7 +6,13 @@ typedef pair<int,int> pii;
 
 
 int main(){
-
+	int T;
+	scanf("%d",&T);
+	while(T--) {
+		int m,n;
+		scanf("%d%d",&m,&n);
+		
+	}
 	return 0;
 }
 
