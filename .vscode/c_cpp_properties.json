@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:\\Users\\kwb\\Documents\\CustomSoftware\\mingw64\\bin\\g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64",
+            "includePath": [
+                "C:\\Users\\kwb\\Documents\\CustomSoftware\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\**",
+                "C:\\Users\\kwb\\Documents\\CustomSoftware\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\**"
+            ]
+        }
+    ],
+    "version": 4
+}

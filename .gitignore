@@ -2,7 +2,6 @@
 /**/*.iml
 /**/out
 /**/venv
-/**/.vscode
 /**/build
 /**/bin
 /**/target
