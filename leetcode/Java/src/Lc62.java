@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 public class Lc62 {
     public int uniquePaths(int m, int n) {

@@ -5,13 +5,41 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "CodeLens (Launch) - Lc1514",
+            "request": "launch",
+            "mainClass": "Lc1514",
+            "projectName": "ojquestion_9a91ca94"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Lc1513",
+            "request": "launch",
+            "mainClass": "Lc1513",
+            "projectName": "ojquestion_9a91ca94"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Lc1512",
+            "request": "launch",
+            "mainClass": "Lc1512",
+            "projectName": "ojquestion_9a91ca94"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Lc446",
+            "request": "launch",
+            "mainClass": "Lc446",
+            "projectName": "ojquestion_9a91ca94"
+        },
+        {
             "name": "运行",
             "type": "cppdbg",
             "request": "launch",
             "program": "C:\\Windows\\System32\\cmd.exe",
             "args": [
                 "/C",
-                "${workspaceFolder}/bin/a.exe", //注意要建立bin目录
+                "${workspaceFolder}/bin/a.exe",
                 "&",
                 "pause"
             ],
@@ -19,8 +47,8 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": true,
-            "miDebuggerPath": "C:\\Users\\kwb\\Documents\\CustomSoftware\\mingw64\\bin\\gdb.exe", //改为自己的环境
-            "preLaunchTask": "Compile",
+            "miDebuggerPath": "C:\\Users\\kwb\\Documents\\CustomSoftware\\mingw64\\bin\\gdb.exe",
+            "preLaunchTask": "Compile"
         },
         {
             "name": "调试",
@@ -33,7 +61,7 @@
             "environment": [],
             "externalConsole": true,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\Users\\kwb\\Documents\\CustomSoftware\\mingw64\\bin\\gdb.exe", //改为自己的环境
+            "miDebuggerPath": "C:\\Users\\kwb\\Documents\\CustomSoftware\\mingw64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -41,7 +69,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Compile",
+            "preLaunchTask": "Compile"
         }
     ]
 }
