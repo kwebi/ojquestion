@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
 using ll = long long;
@@ -7,10 +7,21 @@ using ll = long long;
 ll pow_mod(ll b, ll p, ll k)
 {
     ll res = 1;
-    while (p > 0)
-    {
-        if (p & 1)
-        {
+    while (p > 0) {
+        if (p & 1) {
+            res = (res * b) % k;
+        }
+        b = (b * b) % k;
+        p >>= 1;
+    }
+    return res % k;
+}
+
+ll pow_mod(ll b, ll p, ll k)
+{
+    ll res = 1;
+    while (p > 0) {
+        if (p & 1) {
             res = (res * b) % k;
         }
         b = (b * b) % k;
